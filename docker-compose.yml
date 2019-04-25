@@ -1,0 +1,19 @@
+version: "3"
+services:
+  vault:
+    image: vault
+    environment:
+     - VAULT_DEV_ROOT_TOKEN_ID=deadbeef-dead-beef-dead-beefdeadbeef
+    ports:
+     - "8201:8201"
+     - "8200:8200"
+  nginx:
+    build: nginx
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+    - ./nginx/client/:/client
+    - ./nginx/server/:/server/
+  #entrypoint:
+  #  - "bash"
