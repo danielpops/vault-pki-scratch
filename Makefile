@@ -10,7 +10,7 @@ setup_and_start: venv stop
 	@echo "Starting nginx with mTLS enabled"
 	@venv/bin/docker-compose run -d --service-ports nginx
 	@sleep 1
-	@curl -k --cacert ./client/ca.crt --cert ./client/client.crt --key ./client/client.key https://localhost
+	curl --cacert ./client/ca.crt --cert ./client/client.crt --key ./client/client.key https://localhost
 
 venv:
 	virtualenv venv
