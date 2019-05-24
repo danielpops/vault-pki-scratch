@@ -9,7 +9,7 @@ export VAULT_PKI_INT_MOUNT="${VAULT_URL}/sys/mounts/pki_int"
 export VAULT_PKI_INT_BACKEND="${VAULT_URL}/pki_int"
 export MAX_ROOT_TTL="87600h"
 export MAX_INT_TTL="43800h"
-export DOMAIN="example.com"
+export DOMAIN="localhost"
 export VERBOSE=""
 export CURL="curl ${VERBOSE} -s"
 
@@ -157,7 +157,7 @@ user_cert=$(
         -XPOST \
         -L \
         -H "X-Vault-Token: ${VAULT_TOKEN}" \
-        --data '{"common_name": "test.'"${DOMAIN}"'", "ttl": "24h"}' \
+        --data '{"common_name": "'"${DOMAIN}"'", "ttl": "24h"}' \
         ${VAULT_PKI_INT_BACKEND}/issue/example-dot-com
     )
 
@@ -176,7 +176,7 @@ user_cert=$(
         -XPOST \
         -L \
         -H "X-Vault-Token: ${VAULT_TOKEN}" \
-        --data '{"common_name": "test.'"${DOMAIN}"'", "ttl": "24h"}' \
+        --data '{"common_name": "'"${DOMAIN}"'", "ttl": "24h"}' \
         ${VAULT_PKI_INT_BACKEND}/issue/example-dot-com
     )
 
